@@ -1,0 +1,95 @@
+﻿@model List<DynamicPermissions.Models.ApplicationUser>
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<h1>المستخدمين</h1>
+
+<a  asp-area="Identity" asp-page="/Account/Register" class="btn btn-success">أضافة مستخدم</a>
+
+@{
+    if (!Model.Any())
+    {
+        <h3>No User Found.</h3>
+    }
+    else
+    {
+        <div class="card">
+        <div class="card-body">
+        <div class="table-responsive">
+                    <table class="table table-bordered table-striped">
+        <thead>
+        <tr>
+        <th>
+                                اسم المستخدم
+                                </th>
+                                <th>
+                               Actions
+                                </th>
+                                </tr>
+        </thead>
+                        <tbody>
+
+                            @foreach (var identityUser in Model)
+        {
+            //<div class="card mt-2">
+            //    <div class="card-header">
+            //        اسم المستخدم : 
+            //        <b>@identityUser.UserName</b>
+            //    </div>
+            //    <div class="card-footer">
+
+             
+
+            //    </div>
+            //</div>
+        
+                            <tr>
+                                <td>
+                                    <b>@identityUser.UserName</b>
+                                </td>
+                           
+                            <td>
+                                            @{
+                                                var isAdd = new Dictionary<string, string>
+                            {
+                            {"id", identityUser.Id},
+                            {"isAdd", "true"}
+                            };
+
+                                                var isRemove = new Dictionary<string, string>
+                            {
+                            {"id", identityUser.Id},
+                            {"isAdd", "false"}
+                            };
+
+                                                var data = new Dictionary<string, string>
+                            {
+                            {"id",identityUser.Id}
+                            };
+                                            }
+
+                                        <a asp-controller="User" asp-action="UserRoles" asp-all-route-data="isAdd"
+                                       class="btn btn-primary">اضافة دور</a>
+
+                                        <a asp-controller="User" asp-action="UserRoles" asp-all-route-data="isRemove"
+                                       class="btn btn-primary">حذف دور</a>
+
+                                        @*<a asp-controller="User" asp-action="UpdateSecurityStamp" asp-all-route-data="data"
+                                       class="btn btn-warning">Update Security Stamp</a>*@
+
+                                        <a asp-controller="User" asp-action="Delete" asp-all-route-data="data"
+                                       class="btn btn-danger">حذف المستخدم</a>
+                                    </td>
+                                    
+                            </tr>
+                    }
+                        </tbody>
+
+                    </table>
+                </div>
+            </div>
+        </div>
+    }
+}

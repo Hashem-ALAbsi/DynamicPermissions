@@ -1,0 +1,40 @@
+﻿@* @model DynamicPermissions.ViewModel.CompaniesVM
+@{
+    Layout = null;
+}
+@using DynamicPermissions.Extensions;
+@{
+    //BeginCollectionItemCore already created in HtmlHelper.cs class
+}
+
+@using (Html.BeginCollectionItem("AddMoreList"))
+{
+    <!-------"AddMoreList"----- this is AddMoreViewModel List Object wich is define ViewModel file -->
+    <div id="removeAddMoreDiv" class="col-xs-12 col-sm-12 form-group">
+        <div class="row">
+            <div class="col-md-3">
+                <input asp-for="ContactVM.phoneNo" placeholder="First Name" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <input asp-for="ContactVM.Email" placeholder="First Name" class="form-control" />
+            </div><div class="col-md-4">
+                <input asp-for="Note" placeholder="First Name" class="form-control" />
+            </div>
+            <div class="col-md-3">
+                <button type="button" class="btn btn-danger btn-sm removeDiv" >
+                    Remove
+                </button>
+            </div>
+            <div class="clearfix"></div>
+        </div>  
+    </div>
+}
+<script>
+    $(".removeDiv").click(function () {
+        console.log("ASdas");
+        $(this).parents("#removeAddMoreDiv").remove();
+    });
+</script>
+
+
+ *@

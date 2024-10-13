@@ -1,0 +1,75 @@
+﻿@model DynamicPermissions.ViewModels.User.UserRolesViewModel
+@{
+    ViewData["Title"] = "UserRoles";
+}
+
+<input type="hidden" asp-for="@Model.Id" />
+<input type="hidden" asp-for="@Model.IsAdd" />
+
+<h1>User Roles</h1>
+
+
+@{
+    if (!Model.ValidRoles.Any())
+    {
+        <h3>No Found Role.</h3>
+    }
+    else
+    {
+        <table>
+            <tr>
+                <th>
+                    @Model.UserName
+                </th>
+            </tr>
+
+            @{
+                foreach (var validRole in Model.ValidRoles)
+                {
+                    <tr>
+                        <td>
+                            <div class="p-1">
+                                <input type="checkbox" class="form-check-input" value="@validRole" name="sport" /> <span class="ms-1">@validRole</span>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            }
+        </table>
+
+
+
+        <br />
+        <button class="btn btn-primary" id="btn-userRoles" type="button">Submit</button>
+    }
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+
+    $(document).ready(function() {
+
+        $("#btn-userRoles").click(function() {
+
+            var selectedRoles = [];
+            $('input[type=checkbox]:checked').each(function (){
+                selectedRoles.push($(this).val());
+            });
+
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("UserRoles", "User")",
+                data: {
+                    Id: $("#Id").val(),
+                    IsAdd: $("#IsAdd").val(),
+                    SelectedRoles: selectedRoles
+                }
+            }).done(function (){
+                window.location.replace("@Url.Action("Index","User")");
+            });;
+        });
+
+    });
+
+</script>

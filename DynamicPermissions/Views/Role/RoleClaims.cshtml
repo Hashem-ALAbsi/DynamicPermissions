@@ -1,0 +1,143 @@
+﻿@model DynamicPermissions.ViewModels.Role.RoleClaimsViewModel
+
+<h1>Role Permissions</h1>
+
+<input type="hidden" asp-for="Id" />
+
+@{
+    if (!Model.AreaViewModels.Any())
+    {
+        <h3>No Found Permission.</h3>
+    }
+    else
+    {
+        foreach (var areaViewModel in Model.AreaViewModels)
+        {
+            <div class="row">
+
+            @foreach (var controllerViewModel in areaViewModel.ControllerViewModels)
+            {
+                <div class="col-6">
+                <div class="card">
+
+                <ul class="nav nav-sidebar" data-nav-type="collapsible">
+                   
+
+                  
+                    <li class="nav-item nav-item-submenu">
+                        <a href="#" class="nav-link">
+                            <i class="ph-circles-three-plus"></i>
+                            <span>
+                                @controllerViewModel.Controller.Value
+                            </span>
+                        </a>
+
+                        <ul class="nav-group-sub collapse">
+                                <li class="nav-item">
+                                <div class="d-flex">
+                                @foreach (var actionViewModel in controllerViewModel.ActionViewModels)
+                            {
+                             var value = $"{areaViewModel.Area.Type}|{controllerViewModel.Controller.Type}|{actionViewModel.Action.Type}";
+                            // var text = $"{areaViewModel.Area.Value}|{controllerViewModel.Controller.Value}|{actionViewModel.Action.Value}";
+                           // var value = $"{actionViewModel.Action.Type}";
+                            var text = $"{actionViewModel.Action.Value}";
+                                    if (actionViewModel.Selected)
+                                    {
+                                                <div class="p-1">
+                                                    <input type="checkbox" class="form-check-input " value="@value" checked="checked" /> <span class="ms-1">@text</span>
+                                    </div>
+                                    }
+                                    else
+                                    {
+
+                                                <div class="p-1">
+                                                    <input type="checkbox" class="form-check-input" value="@value" /><span class="ms-1">@text</span>
+                                        </div>
+                                    }
+                            //<li class="nav-item">
+                            //        <a href="#" class="nav-link">@text</a>
+                            //</li>
+                          }
+                                    </div>
+
+                                </li>
+
+                        </ul>
+                    </li>
+                </ul>
+                </div>
+                </div>
+           
+              
+            }
+            </div>
+
+        }
+
+        <br />
+        <button class="btn btn-primary" id="btn-roleClaims" type="button">Submit</button>
+    }
+}
+
+<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+<script>
+
+    $(document).ready(function() {
+
+        $("#btn-roleClaims").click(function () {
+
+            var selectedClaims = [];
+            $('input[type=checkbox]:checked').each(function (){
+                selectedClaims.push($(this).val());
+            });
+
+            $.ajax({
+                method: "POST",
+                url: "@Url.Action("RoleClaims","Role")",
+                data: {
+                    Id: $("#Id").val(),
+                    SelectedClaims: selectedClaims
+                }
+            }).done(function (){
+                window.location.replace("@Url.Action("Index","Role")");
+            });
+
+        });
+
+    });
+</script>
+@*<table>
+    <tr>
+        <th>
+            @controllerViewModel.Controller.Value
+        </th>
+    </tr>
+
+    <tr>
+        <td>
+            @{
+                foreach (var actionViewModel in controllerViewModel.ActionViewModels)
+                {
+                    var value = $"{areaViewModel.Area.Type}|{controllerViewModel.Controller.Type}|{actionViewModel.Action.Type}";
+                    // var text = $"{areaViewModel.Area.Value}|{controllerViewModel.Controller.Value}|{actionViewModel.Action.Value}";
+                    //  var value = $"{actionViewModel.Action.Type}";
+                    var text = $"{actionViewModel.Action.Value}";
+
+                    if (actionViewModel.Selected)
+                    {
+                        <div class="col-6">
+                            <input type="checkbox" value="@value" checked="checked" />@text
+                        </div>
+                    }
+                    else
+                    {
+                        <div>
+                            <input type="checkbox" value="@value" />@text
+                        </div>
+                    }
+                }
+            }
+        </td>
+    </tr>
+</table>*@

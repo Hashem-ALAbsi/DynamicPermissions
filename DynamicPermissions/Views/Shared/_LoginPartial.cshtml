@@ -1,0 +1,44 @@
+﻿@using DynamicPermissions.Models;
+@using Microsoft.AspNetCore.Identity
+@inject SignInManager<ApplicationUser> SignInManager
+@inject UserManager<ApplicationUser> UserManager
+
+<ul class="navbar-nav">
+@if (SignInManager.IsSignedIn(User))
+{
+    <li class="nav-item">
+        <a  class="nav-link" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity?.Name!</a>
+    </li>
+    <li class="nav-item">
+        <form  class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+            <button  type="submit" class="nav-link btn btn-link">Logout</button>
+        </form>
+    </li>
+}
+else
+{
+
+      @*  <li class="nav-item">
+            <a asp-area="Identity" asp-page="/Account/Register" class="navbar-nav-link navbar-nav-link-icon rounded ms-1">
+                <div class="d-flex align-items-center mx-md-1">
+                    <i class="ph-user-circle-plus"></i>
+                    <span class="d-none d-md-inline-block ms-2">Register</span>
+                </div>
+            </a>
+        </li>*@
+        <li class="nav-item">
+            <a asp-area="Identity" asp-page="/Account/Login" class="navbar-nav-link navbar-nav-link-icon rounded ms-1">
+                <div class="d-flex align-items-center mx-md-1">
+                    <i class="ph-user-circle"></i>
+                    <span class="d-none d-md-inline-block ms-2">Login</span>
+                </div>
+            </a>
+        </li>
+   @* <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+    </li>*@
+}
+</ul>

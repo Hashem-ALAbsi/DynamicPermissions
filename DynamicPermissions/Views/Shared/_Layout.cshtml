@@ -1,0 +1,306 @@
+﻿<!DOCTYPE html>
+<html lang="en" dir="rtl">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>Limitless - Responsive Web Application Kit by Eugene Kopyov</title>
+
+	<!-- Global stylesheets -->
+	<link href="~/assets/assets/fonts/inter/inter.css" rel="stylesheet" type="text/css">
+	<link href="~/assets/assets/icons/phosphor/styles.min.css" rel="stylesheet" type="text/css">
+	@*<link href="~/assets/css/rtl/all.css" id="stylesheet" rel="stylesheet" type="text/css">*@
+	<link href="~/assets/css/rtl/all.min.css" id="stylesheet" rel="stylesheet" type="text/css">
+	<!-- /global stylesheets -->
+	<!-- Core JS files -->
+	<script src="~/assets/assets/demo/demo_configurator.js"></script>
+	<script src="~/assets/assets/js/bootstrap/bootstrap.bundle.min.js"></script>
+	<!-- /core JS files -->
+	<!-- Theme JS files -->
+@*	<script src="~/assets/assets/js/vendor/visualization/d3/d3.min.js"></script>
+	<script src="~/assets/assets/js/vendor/visualization/d3/d3_tooltip.js"></script>*@
+	<title>@ViewData["Title"] - DynamicPermissions</title>
+
+	<script src="~/assets/js/app.js"></script>
+	<script src="~/assets/assets/demo/pages/dashboard.js"></script>
+	<script src="~/assets/assets/demo/charts/pages/dashboard/streamgraph.js"></script>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+
+	@*<script src="~/assets/assets/demo/charts/pages/dashboard/sparklines.js"></script>*@
+	@*<script src="~/assets/assets/demo/charts/pages/dashboard/lines.js"></script>*@
+	@*<script src="~/assets/assets/demo/charts/pages/dashboard/areas.js"></script>*@
+	<script src="~/assets/assets/demo/charts/pages/dashboard/donuts.js"></script>
+	@*<script src="~/assets/assets/demo/charts/pages/dashboard/bars.js"></script>*@
+	<script src="~/assets/assets/demo/charts/pages/dashboard/progress.js"></script>
+	<script src="~/assets/assets/demo/charts/pages/dashboard/heatmaps.js"></script>
+	@*<script src="~/assets/assets/demo/charts/pages/dashboard/pies.js"></script>*@
+	@*<script src="~/assets/assets/demo/charts/pages/dashboard/bullets.js"></script>*@
+	<script src="~/assets/assets/js/vendor/forms/selects/select2.min.js"></script>
+	<script src="~/assets/assets/demo/pages/form_select2.js"></script>
+	<script src="~/assets/assets/js/vendor/media/glightbox.min.js"></script>
+
+	<script src="~/assets/assets/demo/pages/gallery_library.js"></script>
+	<!-- /theme JS files -->
+	@*<script src="~/lib/jquery/dist/jquery.js"></script>*@
+	@*<script src="~/lib/jquery-validation/dist/additional-methods.min.js"></script>*@
+	@*<script src="~/lib/jquery-validation/dist/additional-methods.js"></script>*@
+	@*<script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>*@
+	@*<script src="~/lib/jquery-validation/dist/jquery.validate.js"></script>*@
+</head>
+
+
+<body>
+	<!-- Main navbar -->
+	<div class="navbar navbar-dark navbar-expand-lg navbar-static">
+		<div class="container-fluid">
+			<div class="d-flex d-lg-none me-2">
+				<button type="button" class="navbar-toggler sidebar-mobile-main-toggle rounded-pill">
+					<i class="ph-list"></i>
+				</button>
+			</div>
+
+			<div class="navbar-brand flex-1 flex-lg-0">
+				<a asp-controller="Home" asp-action="index" class="d-inline-flex align-items-center" >
+					<img src="~/assets/assets/images/logo_icon.svg" alt="">
+					<span>DynamicPermissions</span>
+@*					<img src="~/assets/assets/images/logo_text_light.svg" class="d-none d-sm-inline-block h-16px ms-3" alt="">
+*@				</a>
+			</div>
+
+			
+			<ul class="nav flex-row justify-content-end order-1 order-lg-2">
+				<li class="nav-item ms-lg-2">
+					<a href="#" class="navbar-nav-link navbar-nav-link-icon rounded-pill" data-bs-toggle="offcanvas" data-bs-target="#notifications">
+						<i class="ph-bell"></i>
+						<span class="badge bg-yellow text-black position-absolute top-0 end-0 translate-middle-top zindex-1 rounded-pill mt-1 me-1">2</span>
+					</a>
+				</li>
+				<partial name="_LoginPartial" />
+				
+				<li class="nav-item nav-item-dropdown-lg dropdown ms-lg-2">
+					<a href="#" class="navbar-nav-link align-items-center rounded-pill p-1" data-bs-toggle="dropdown">
+						<div class="status-indicator-container">
+							<img src="~/assets/assets/images/demo/users/face11.jpg" class="w-32px h-32px rounded-pill" alt="">
+							<span class="status-indicator bg-success"></span>
+						</div>
+						<span class="d-none d-lg-inline-block mx-lg-2">Victoria</span>
+					</a>
+
+					<div class="dropdown-menu dropdown-menu-end">
+						<a href="#" class="dropdown-item">
+							<i class="ph-user-circle me-2"></i>
+							My profile
+						</a>
+						<a href="#" class="dropdown-item">
+							<i class="ph-currency-circle-dollar me-2"></i>
+							My subscription
+						</a>
+						<a href="#" class="dropdown-item">
+							<i class="ph-shopping-cart me-2"></i>
+							My orders
+						</a>
+						<a href="#" class="dropdown-item">
+							<i class="ph-envelope-open me-2"></i>
+							My inbox
+							<span class="badge bg-primary rounded-pill ms-auto">26</span>
+						</a>
+						<div class="dropdown-divider"></div>
+						<a href="#" class="dropdown-item">
+							<i class="ph-gear me-2"></i>
+							Account settings
+						</a>
+						<a href="#" class="dropdown-item">
+							<i class="ph-sign-out me-2"></i>
+							Logout
+						</a>
+					</div>
+				</li>
+			</ul>
+		</div>
+	</div>
+	<!-- /main navbar -->
+		<div class="page-content pt-0">
+
+		<!-- Main sidebar -->
+		<div class="sidebar sidebar-main sidebar-expand-lg align-self-start mt-2">
+
+			<!-- Sidebar content -->
+			<div class="sidebar-content">
+
+				<!-- Sidebar header -->
+				<div class="sidebar-section">
+					<div class="sidebar-section-body d-flex justify-content-center">
+						<h5 class="sidebar-resize-hide flex-grow-1 my-auto">Navigation</h5>
+
+						<div>
+							<button type="button" class="btn btn-light btn-icon btn-sm rounded-pill border-transparent sidebar-control sidebar-main-resize d-none d-lg-inline-flex">
+								<i class="ph-arrows-left-right"></i>
+							</button>
+
+							<button type="button" class="btn btn-light btn-icon btn-sm rounded-pill border-transparent sidebar-mobile-main-toggle d-lg-none">
+								<i class="ph-x"></i>
+							</button>
+						</div>
+					</div>
+				</div>
+				<!-- /sidebar header -->
+
+
+				<!-- Main navigation -->
+				<div class="sidebar-section">
+					<ul class="nav nav-sidebar" data-nav-type="accordion">
+
+						<!-- Main -->
+						<li class="nav-item-header pt-0">
+							<div class="text-uppercase fs-sm lh-sm opacity-50 sidebar-resize-hide">Main</div>
+							<i class="ph-dots-three sidebar-resize-show"></i>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link active" href="/Home/index">
+								<i class="ph-house"></i>
+								<span>
+									Dashboard
+
+								</span>
+							</a>
+						</li>
+
+					
+					@*	<li class="nav-item">
+							<a class="nav-link active" asp-controller="Home" asp-action="index">
+								<i class="ph-house"></i>
+								<span>
+									Dashboard
+
+								</span>
+							</a>
+						</li>*@
+						<li class="nav-item nav-item-submenu">
+							<a href="#" class="nav-link">
+								<i class="ph-layout"></i>
+								<span>ادارة المستخدمين</span>
+							</a>
+							<ul class="nav-group-sub collapse" data-submenu-title="Layouts">
+								<li class="nav-item"><a asp-controller="User" asp-action="index" class="nav-link"> المستخدمين </a></li>
+								<li class="nav-item"><a asp-controller="Role" asp-action="index" class="nav-link">الادوار  </a></li>
+							</ul>
+						</li>
+
+					
+
+						<!-- Layout -->
+					
+						<!-- /layout -->
+
+					</ul>
+				</div>
+				<!-- /main navigation -->
+
+			</div>
+			<!-- /sidebar content -->
+			
+		</div>
+		<!-- /main sidebar -->
+
+		<div class="content-wrapper">
+			<div class="content">
+		<div class="container">
+			<main role="main" class="pb-3">
+				@RenderBody()
+			</main>
+		</div>
+		</div>
+
+
+	</div>
+	<!-- /page content -->
+
+
+	
+	<!-- Demo config -->
+	<div class="offcanvas offcanvas-end" tabindex="-1" id="demo_config">
+		<div class="position-absolute top-50 end-100 visible">
+			<button type="button" class="btn btn-primary btn-icon translate-middle-y rounded-end-0" data-bs-toggle="offcanvas" data-bs-target="#demo_config">
+				<i class="ph-gear"></i>
+			</button>
+		</div>
+
+		<div class="offcanvas-header border-bottom py-0">
+			<h5 class="offcanvas-title py-3">Demo configuration</h5>
+			<button type="button" class="btn btn-light btn-sm btn-icon border-transparent rounded-pill" data-bs-dismiss="offcanvas">
+				<i class="ph-x"></i>
+			</button>
+		</div>
+
+		<div class="offcanvas-body">
+			<div class="fw-semibold mb-2">Color mode</div>
+			<div class="list-group mb-3">
+				<label class="list-group-item list-group-item-action form-check border-width-1 rounded mb-2">
+					<div class="d-flex flex-fill my-1">
+						<div class="form-check-label d-flex me-2">
+							<i class="ph-sun ph-lg me-3"></i>
+							<div>
+								<span class="fw-bold">Light theme</span>
+								<div class="fs-sm text-muted">Set light theme or reset to default</div>
+							</div>
+						</div>
+						<input type="radio" class="form-check-input cursor-pointer ms-auto" name="main-theme" value="light" checked>
+					</div>
+				</label>
+
+				<label class="list-group-item list-group-item-action form-check border-width-1 rounded mb-2">
+					<div class="d-flex flex-fill my-1">
+						<div class="form-check-label d-flex me-2">
+							<i class="ph-moon ph-lg me-3"></i>
+							<div>
+								<span class="fw-bold">Dark theme</span>
+								<div class="fs-sm text-muted">Switch to dark theme</div>
+							</div>
+						</div>
+						<input type="radio" class="form-check-input cursor-pointer ms-auto" name="main-theme" value="dark">
+					</div>
+				</label>
+
+				<label class="list-group-item list-group-item-action form-check border-width-1 rounded mb-0">
+					<div class="d-flex flex-fill my-1">
+						<div class="form-check-label d-flex me-2">
+							<i class="ph-translate ph-lg me-3"></i>
+							<div>
+								<span class="fw-bold">Auto theme</span>
+								<div class="fs-sm text-muted">Set theme based on system mode</div>
+							</div>
+						</div>
+						<input type="radio" class="form-check-input cursor-pointer ms-auto" name="main-theme" value="auto">
+					</div>
+				</label>
+			</div>
+
+			<div class="fw-semibold mb-2">Direction</div>
+			<div class="list-group mb-3">
+				<label class="list-group-item list-group-item-action form-check border-width-1 rounded mb-0">
+					<div class="d-flex flex-fill my-1">
+						<div class="form-check-label d-flex me-2">
+							<i class="ph-translate ph-lg me-3"></i>
+							<div>
+								<span class="fw-bold">RTL direction</span>
+								<div class="text-muted">Toggle between LTR and RTL</div>
+							</div>
+						</div>
+						<input type="checkbox" name="layout-direction" value="rtl" class="form-check-input cursor-pointer m-0 ms-auto">
+					</div>
+				</label>
+			</div>
+
+			
+		</div>
+
+
+	</div>
+		@*<footer class="border-top footer text-muted">
+			<div class="container">
+				&copy; 2023 - DynamicPermissions - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+			</div>
+		</footer>*@
+	@await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
